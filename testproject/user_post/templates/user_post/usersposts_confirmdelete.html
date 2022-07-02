@@ -1,11 +1,11 @@
-{% extends 'animals/base.html' %}
+{% extends 'user_post/base.html' %}
 
 {% block title %}
-  Delete animal {{ animal.name }}
+  Delete user {{ user.name }}
 {% endblock %}
 
 {% block body %}
-  <h1>Delete animal {{ animal.name }}?</h1>
+  <h1>Delete user {{ user.name }}?</h1>
   <form method="post">
     {% csrf_token %}
 
@@ -16,8 +16,8 @@
 
   <br>
   <div>
-    <a href="{% url 'animals:details' animal.pk %}">Back to animal</a>
+    <a href="{% url 'user_post:details' user.pk %}">Back to users</a>
     <br>
-    <a href="{% url 'animals:list' %}">Animals list</a>
+    <a href="{% url 'user_post:list' %}">USers list</a>
   </div>
 {% endblock %}

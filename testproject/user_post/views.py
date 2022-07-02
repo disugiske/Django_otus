@@ -19,8 +19,8 @@ def index(request: HttpRequest):
     }
     return render(request, "user_post/index.html", context=context)
 
-def details(request: HttpRequest, pk: int):
-    users = UsersPosts.objects.filter_by(pk)
+def details(request: HttpRequest,pk: int):
+    users = UsersPosts.objects.filter(pk)
     context = {
         "users": users,
         "pk": pk,
@@ -30,6 +30,7 @@ def details(request: HttpRequest, pk: int):
 
 def nousers(request: HttpRequest):
     return render(request, "user_post/nousers.html")
+
 class UsersPostListView(ListView):
     #queryset = UsersPosts.objects.all()
    # if UsersPosts.objects.all().exists():
@@ -38,6 +39,7 @@ class UsersPostListView(ListView):
 
 class UsersPostDetailView(DetailView):
     model = UsersPosts
+    #queryset=UsersPosts.objects.all()
 
 class UsersPostDeleteView(DeleteView):
     model = UsersPosts

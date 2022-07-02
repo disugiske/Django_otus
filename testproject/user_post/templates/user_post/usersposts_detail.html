@@ -8,12 +8,12 @@
   <h1>User {{ users.name }}</h1>
   <div>
     <ul>
-      <li>username: {{ user.username }}</li>
-      <li>email: {{ user.email }}</li>
+      <li>username: {{ users.username }}</li>
+      <li>email: {{ users.email }}</li>
     </ul>
     <div>
       <strong>Description:</strong>
-      <p>{{ user.body }}</p>
+      <p>{{ users.body }}</p>
     </div>
     <a href="{% url 'user_post:list' %}">Back to users</a>
   </div>
