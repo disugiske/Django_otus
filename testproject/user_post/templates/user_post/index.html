@@ -1,0 +1,23 @@
+{% extends 'user_post/base.html' %}
+
+{% block title %}
+  Users list
+{% endblock %}
+
+
+{% block body %}
+  <h1>Hello Users!</h1>
+  <div>
+    <code>{{ request.method }}</code>
+    <code>{{ request.path }}</code>
+    <ul>
+      {% for user in name %}
+        <li>
+
+            {{ user.name }}
+           ({{ user.email }})
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

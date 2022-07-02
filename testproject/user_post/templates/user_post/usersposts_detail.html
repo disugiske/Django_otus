@@ -1,0 +1,25 @@
+{% extends 'user_post/base.html' %}
+
+{% block title %}
+  User {{ usersq.name }}
+{% endblock %}
+
+{% block body %}
+  <h1>User {{ users.name }}</h1>
+  <div>
+    <ul>
+      <li>username: {{ user.username }}</li>
+      <li>email: {{ user.email }}</li>
+    </ul>
+    <div>
+      <strong>Description:</strong>
+      <p>{{ user.body }}</p>
+    </div>
+    <a href="{% url 'user_post:list' %}">Back to users</a>
+  </div>
+  <hr>
+  <div>
+    <a href="{% url 'user_post:delete' user.pk %}">Delete user</a>
+  </div>
+
+{% endblock %}

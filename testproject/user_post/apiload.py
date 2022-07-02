@@ -1,39 +1,42 @@
-import requests
-from django.http import request
+from .models import Usersjson, Postsjson
 
-from models import Usersjson, Postsjson
+import requests
 
 USERS_DATA_URL = "https://jsonplaceholder.typicode.com/users"
 POSTS_DATA_URL = "https://jsonplaceholder.typicode.com/posts"
-
-
-def get_userdata():
-    userdata = requests.get(USERS_DATA_URL).json()
-    return userdata
 
 def get_posts():
     postdata = requests.get(POSTS_DATA_URL).json()
     return postdata
 
+def get_userdata():
+    userdata = requests.get(USERS_DATA_URL).json()
+    return userdata
+
 
 def load_json_users(userdata, postdata):
+    user_json = []
+    post_json = []
     for list_data in userdata:
         user_json.append(Usersjson(
             name=list_data.get("name"),
             username=list_data.get("username"),
             email=list_data.get("email"),
-            user_id=list_data.get("id"),
-                                )
+            pk=list_data.get("id"),
         )
-    Usersjson.object.bulk_create(user_json)
-
+        )
+    Usersjson.objects.bulk_create(user_json)
     for post_data in postdata:
         post_json.append(Postsjson(
-            user_id=post_data.get("userId"),
+            userId_id=post_data.get("userId"),
             body=post_data.get("body"))
         )
-    Postsjson.object.bulk_create(post_json)
+    Postsjson.objects.bulk_create(post_json)
+
+    print(user_json)
+
+
 
 def init():
-    if not Usersjson.object.all().exists():
+    if not Usersjson.objects.all().exists():
         load_json_users(get_userdata(), get_posts())

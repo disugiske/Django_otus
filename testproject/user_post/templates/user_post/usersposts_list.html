@@ -1,0 +1,26 @@
+{% extends 'user_post/base.html' %}
+
+{% block title %}
+  UsersPost list
+{% endblock %}
+
+
+{% block body %}
+  <h1>Hello Users!</h1>
+  <div>
+    <ul>
+       {% for user in object_list %}
+
+        <li>
+          <a href="{% url 'user_post:details' user.id %}">
+            {{ user.name }}</a>
+          ({{ user.email }})
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <hr>
+  <div>
+    <a href="{% url 'user_post:create' %}">Create user</a>
+  </div>
+{% endblock %}
