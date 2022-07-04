@@ -19,15 +19,14 @@ def index(request: HttpRequest):
     }
     return render(request, "user_post/index.html", context=context)
 
-def details(request: HttpRequest,pk: int):
-    users = UsersPosts.objects.filter(pk)
-    context = {
-        "users": users,
-        "pk": pk,
-    }
-    print(users)
-    return render(request, "user_post/usersposts_detail.html", context=context)
 
+def details(request: HttpRequest, pk):
+    us = get_object_or_404(UsersPosts.objects.filter(pk), pk=pk)
+    context = {
+        "us": us,
+    }
+    print(pk)
+    return render(request, "user_post/usersposts_detail.html", context=context)
 def nousers(request: HttpRequest):
     return render(request, "user_post/nousers.html")
 
@@ -39,10 +38,12 @@ class UsersPostListView(ListView):
 
 class UsersPostDetailView(DetailView):
     model = UsersPosts
-    #queryset=UsersPosts.objects.all()
+    pk_url_kwarg = "pk"
+    context_object_name = "us"
 
 class UsersPostDeleteView(DeleteView):
     model = UsersPosts
+    context_object_name = "us"
     success_url = reverse_lazy("user_post:list")
 
 class UsersPostCreateView(CreateView):

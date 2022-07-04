@@ -10,10 +10,10 @@ app_name = "user_post"
 
 urlpatterns = [
     path("", UsersPostListView.as_view(), name="list"),
-    path("test/", index, name="index"),
     path('<int:pk>/', UsersPostDetailView.as_view(), name="details"),
     path("<int:pk>/confirm-delete/", UsersPostDeleteView.as_view(), name="delete"),
     path("create/", UsersPostCreateView.as_view(), name="create"),
+    path("test/", index, name="index"),
     #path("nousers", name="nousers"),
 ]
 

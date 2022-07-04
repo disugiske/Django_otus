@@ -1,25 +1,25 @@
 {% extends 'user_post/base.html' %}
 
 {% block title %}
-  User {{ usersq.name }}
+  User {{ us.name }}
 {% endblock %}
 
 {% block body %}
-  <h1>User {{ users.name }}</h1>
+  <h1>User {{ us.name }}</h1>
   <div>
     <ul>
-      <li>username: {{ users.username }}</li>
-      <li>email: {{ users.email }}</li>
+      <li>username: {{ us.username }}</li>
+      <li>email: {{ us.email }}</li>
     </ul>
     <div>
       <strong>Description:</strong>
-      <p>{{ users.body }}</p>
+      <p>{{ us.body }}</p>
     </div>
     <a href="{% url 'user_post:list' %}">Back to users</a>
   </div>
   <hr>
   <div>
-    <a href="{% url 'user_post:delete' user.pk %}">Delete user</a>
+    <a href="{% url 'user_post:delete' us.pk %}">Delete user</a>
   </div>
 
 {% endblock %}
