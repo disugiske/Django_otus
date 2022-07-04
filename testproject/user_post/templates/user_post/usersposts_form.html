@@ -1,15 +1,16 @@
 {% extends 'user_post/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
   Create user
 {% endblock %}
 
 {% block body %}
+  <div class = "w-50">
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" class="btn btn-success" value="Save">
 
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-{#    {{ form.as_ul }}#}
-    <input type="submit" value="Save">
   </form>
+  </div>
 {% endblock %}
