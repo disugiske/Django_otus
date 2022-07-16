@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "user_post.apps.UserPostConfig",
     'crispy_forms',
+    'rest_framework',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

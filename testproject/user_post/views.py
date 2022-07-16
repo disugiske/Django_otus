@@ -35,6 +35,7 @@ class UsersPostListView(ListView):
    # if UsersPosts.objects.all().exists():
    #     print("no users")
     model = UsersPosts
+    context_object_name = "usersposts"
 
 class UsersPostDetailView(DetailView):
     model = UsersPosts
